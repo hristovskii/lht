@@ -2,9 +2,12 @@
 
 import Image from "next/image";
 import LOGO from "@/app/resources/logo/LC_Skopje_white.png";
+import LOGO2 from "@/app/resources/logo/on_white_small.png";
 import Photo1 from "@/app/resources/logo/participants.png";
 import Photo2 from "@/app/resources/logo/participants_2.png";
 import { RiRobot2Line } from "react-icons/ri";
+import Icon from "./Icon";
+import { MdElectricBolt } from "react-icons/md";
 
 
 
@@ -22,12 +25,12 @@ export default function EESTEC() {
                                     }} className="grow shrink rounded">
                             </div>
                             <div className="rounded border-2 border-eestec md:p-16 p-8 ml-3 flex justify-content items-center">
-                                <RiRobot2Line size={40} color="#149414"></RiRobot2Line>
+                                {/* <RiRobot2Line size={40} color="#149414"></RiRobot2Line> */}
+                                <Image src={LOGO2} alt="Sponsor Logo" height={100} className="mt-8 mb-8"></Image> 
                             </div>
                         </div>
-                        <div className="rounded bg-eestec mt-3 grow px-6 py-5 flex items-end lg:block hidden" style={{ height: "220px" }}
-                        >
-                            <h3 className="text-4xl text-red font-eestec font-light">Power Your Future</h3>
+                        <div className="rounded bg-eestec mt-3 grow px-6 py-5 flex items-end lg:block hidden" style={{ height: "96px" }}>
+                            <h3 className="text-4xl text-red font-eestec font-light px- my-2 flex">Power Your Future <Icon icon={MdElectricBolt} color={""} size={""}></Icon></h3>  
                         </div>
                 </div>
                 <div className="basis-1/5 lg:order-2 order-1">

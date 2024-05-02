@@ -6,7 +6,56 @@ import Participants from '../resources/logo/participants.png'
 import Link from "next/link";
 import { FaInstagram } from "react-icons/fa";
 
+import Image from "next/image";
+import nextEvent from "@/app/resources/next_event.jpg";
+import { useState, useEffect } from "react";
+
 export default function Hero() {
+
+    const [toBeAnnounced, setAnnounced] = useState(false);
+    const [eventTime, setEventTime] = useState(false);
+    const [days, setDays] = useState(0);
+    const [hours, setHours] = useState(0);
+    const [minutes, setMinutes] = useState(0);
+    const [seconds, setSeconds] = useState(0);
+
+    useEffect(() => {
+
+       const target = new Date("05/12/2024 23:59:59");
+    
+
+      const interval = setInterval(() => {
+        const now = new Date();
+
+        const difference = target.getTime() - now.getTime();
+
+        const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+        setDays(d);
+
+        const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        setHours(h);
+
+        const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        setMinutes(m);
+
+        const s = Math.floor((difference % (1000 * 60)) / 1000);
+        setSeconds(s);
+
+        const targetTime = new Date("05/02/2025 21:41:30"); // Convert target time to a Date object
+
+        if(target.getTime() === targetTime.getTime() && toBeAnnounced === false){ // Compare target time with targetTime
+          setAnnounced(true);
+        } else if(d<=0 && h<=0 && m<=0 && s<=0){
+          setEventTime(true);
+        }
+
+      }, 1000);
+
+      return () => clearInterval(interval);
+
+
+    }, []);
+
     return (
       <main className="w-full px-5 py-24" style={{
         backgroundImage: `linear-gradient(180deg, #262626 0%, rgba(38, 38, 38, 0.5) 100%), url(${Participants.src})`,
@@ -23,11 +72,47 @@ export default function Hero() {
           </p>
           <Link href={""}>
             <Button text="Apply Now!" icon={MdArrowOutward}></Button>
-          </Link>
+            <span>Time Left to Apply:</span> <br />
+              {/* <span className="text-eestec font-bold">XX</span><span> d </span>
+              <span className="text-eestec font-bold">XX</span><span> h </span> 
+              <span className="text-eestec font-bold">XX</span><span> m </span> 
+              <span className="text-eestec font-bold">XX</span><span> s </span>   */}
 
-          <Link href={"https://www.instagram.com/lht_skopje/"}>
-              <FaInstagram size={40} color="#149414"></FaInstagram>
+                {toBeAnnounced ? (<span className="text-eestec font-bold">To Be Announced!</span>) : 
+                (eventTime ? (<span className="text-eestec font-bold">Event has started!</span>) : (
+                <><span>{days-2} d <span className="text-eestec font-bold"> : </span> 
+                {hours} h <span className="text-eestec font-bold"> : </span> 
+                {minutes} mins <span className="text-eestec font-bold"> : </span> 
+                {seconds} sec</span><br /></> )
+                )
+              }
+
+              
+              
           </Link>
+          <br />
+          <Link href={"https://www.instagram.com/lht_skopje/"}>
+              <FaInstagram size={60} color="#149414"></FaInstagram> 
+          </Link>
+        </div>
+
+        <div className="lg:flex justify-evenly items-center gap-14">
+          <h1 className="md:text-5xl text-4xl font-semibold my-3 text-center text-white">
+          Next<span> <span className="text-eestec font-bold">event</span> in:</span> <br /> <br />
+          {toBeAnnounced ? (<span className="text-eestec font-bold">To Be Announced!</span>) : 
+                (eventTime ? (<span className="text-eestec font-bold">Event has started!</span>) : (
+                <><span>{days} d <span className="text-eestec font-bold"> : </span> 
+                {hours} h <span className="text-eestec font-bold"> : </span> 
+                {minutes} mins <span className="text-eestec font-bold"> : </span> 
+                {seconds} sec</span><br /></> )
+                )
+              }
+          </h1>
+          <div>
+            <h1 className="md:text-5xl text-4xl font-semibold my-3 text-center text-white"> <span className="text-eestec font-bold">Coming </span>next:</h1>
+          <Image src={nextEvent} alt="Next event" height={500} className="mt-8 mb-8"></Image>
+          </div>
+                
         </div>
 
         

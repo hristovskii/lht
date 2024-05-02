@@ -4,6 +4,7 @@ import KeyFeatures from "./components/KeyFeatures";
 import Promo from "./components/Promo";
 import Sponsors from "./components/Sponsors";
 import Statistics from "./components/Statistics";
+import Events from "./components/Events";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <KeyFeatures></KeyFeatures>
       <EESTEC></EESTEC>
       <Statistics></Statistics>
+      <Events></Events>
       <Sponsors></Sponsors>
       <Promo></Promo>
     </>

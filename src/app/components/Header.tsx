@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import LHT from "@/app/resources/logo/On_White.svg";
+import LHT from "@/app/resources/logo/on_white_small.png";
 import EESTEC from "@/app/resources/logo/LC_Skopje_red.png";
 import Image from 'next/image';
 
