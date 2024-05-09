@@ -73,7 +73,7 @@ export default function Hero() {
           <p className="md:text-base text-sm text-slate-50 my-3 text-balance leading-none">
           Join us for the 7th edition of Learn How To workshop and <span className="font-medium">Power Your Future!</span>
           </p>
-          <Link href={""}>
+          <Link href={"https://forms.gle/Gm3Q5xNAA6hiZMKS8"}>
             <Button text="Apply Now!" icon={MdArrowOutward}></Button>
             <span>Time Left to Apply:</span> <br />
               {/* <span className="text-eestec font-bold">XX</span><span> d </span>
