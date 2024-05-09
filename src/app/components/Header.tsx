@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import LHT from "@/app/resources/logo/on_white_small.png";
-import EESTEC from "@/app/resources/logo/LC_Skopje_red.png";
+import EESTEC from "@/app/resources/logo/LC_Skopje_black.png";
 import Image from 'next/image';
 
 export default function Header() {

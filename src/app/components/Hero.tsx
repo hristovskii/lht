@@ -7,8 +7,9 @@ import Link from "next/link";
 import { FaInstagram } from "react-icons/fa";
 
 import Image from "next/image";
-import nextEvent from "@/app/resources/next_event.jpg";
+import nextEvent from "@/app/resources/lht7.jpg";
 import { useState, useEffect } from "react";
+import { RevealList } from "next-reveal";
 
 export default function Hero() {
 
@@ -21,7 +22,7 @@ export default function Hero() {
 
     useEffect(() => {
 
-       const target = new Date("05/12/2024 23:59:59");
+       const target = new Date("05/20/2024 18:00:00");
     
 
       const interval = setInterval(() => {
@@ -63,6 +64,8 @@ export default function Hero() {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}>
+
+        <RevealList interval={100} delay={500}>
         <div className="container mx-auto md:px-10 px-5 py-16">
           <h1 className="md:text-5xl text-4xl font-semibold my-3 text-balance text-white">
               Learn How to develop Apps and Improve Your <span className="text-eestec font-bold">Coding</span> Skills with <span className="text-eestec font-bold">EESTEC LC Skopje</span>!
@@ -80,7 +83,7 @@ export default function Hero() {
 
                 {toBeAnnounced ? (<span className="text-eestec font-bold">To Be Announced!</span>) : 
                 (eventTime ? (<span className="text-eestec font-bold">Event has started!</span>) : (
-                <><span>{days-2} d <span className="text-eestec font-bold"> : </span> 
+                <><span>{days-1} d <span className="text-eestec font-bold"> : </span> 
                 {hours} h <span className="text-eestec font-bold"> : </span> 
                 {minutes} mins <span className="text-eestec font-bold"> : </span> 
                 {seconds} sec</span><br /></> )
@@ -115,7 +118,7 @@ export default function Hero() {
                 
         </div>
 
-        
+        </RevealList>
       </main>  
     );
 }

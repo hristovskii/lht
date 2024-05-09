@@ -9,9 +9,14 @@ import img5 from "@/app/resources/lht5.jpg";
 import img6 from "@/app/resources/lht6.jpg";
 import Heading from "./Heading";
 
+
+import { RevealList } from  'next-reveal'
+
 export default function Events() {
     return(
         <section className="my-10 md:mx-28 mx-12">
+            
+            <RevealList interval={100} delay={500}>
             <div className="lg:px-36 md:px-16 px-4 grid justify-center items-center">
             <Heading heading={"Latest Events"}></Heading>
             </div>
@@ -26,6 +31,8 @@ export default function Events() {
                 <Image src={img2} alt="Sponsor Logo" height={400} className="mt-8 mb-8"></Image>
                 <Image src={img1} alt="Sponsor Logo" height={400} className="mt-8 mb-8"></Image>
             </div>
+
+            </RevealList>
         </section>
     );
 }
