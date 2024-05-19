@@ -28,6 +28,19 @@ body {
   transform: scale(1.10);
 }
 
+
+.zoom{
+  border: 5px solid green;
+  transition: transform 0.3s ease-in-out;
+}
+
+.zoom:hover{
+  /* transition: transform 0.3s ease-in-out; */
+  transform: scale(1.10);
+  /* border: 5px solid red; */
+}
+
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

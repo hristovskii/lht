@@ -21,15 +21,15 @@ export default function Events() {
             <Heading heading={"Latest Events"}></Heading>
             </div>
             <div className="lg:flex justify-evenly items-center gap-14">
-                <Image src={img6} alt="Sponsor Logo" height={400} className="mt-8 mb-8"></Image>
-                <Image src={img5} alt="Sponsor Logo" height={400} className="mt-8 mb-8"></Image>
-                <Image src={img4} alt="Sponsor Logo" height={400} className="mt-8 mb-8"></Image>
+                <Image src={img6} alt="Sponsor Logo" height={400} className="mt-8 mb-8 zoom"></Image>
+                <Image src={img5} alt="Sponsor Logo" height={400} className="mt-8 mb-8 zoom"></Image>
+                <Image src={img4} alt="Sponsor Logo" height={400} className="mt-8 mb-8 zoom"></Image>
             </div>
 
             <div className="lg:flex justify-evenly items-center gap-14">
-                <Image src={img3} alt="Sponsor Logo" height={400} className="mt-8 mb-8"></Image>
-                <Image src={img2} alt="Sponsor Logo" height={400} className="mt-8 mb-8"></Image>
-                <Image src={img1} alt="Sponsor Logo" height={400} className="mt-8 mb-8"></Image>
+                <Image src={img3} alt="Sponsor Logo" height={400} className="mt-8 mb-8 zoom"></Image>
+                <Image src={img2} alt="Sponsor Logo" height={400} className="mt-8 mb-8 zoom"></Image>
+                <Image src={img1} alt="Sponsor Logo" height={400} className="mt-8 mb-8 zoom"></Image>
             </div>
 
             </RevealList>
