@@ -13,46 +13,67 @@ import { RevealList } from "next-reveal";
 
 export default function Hero() {
 
-    const [toBeAnnounced, setAnnounced] = useState(false);
-    const [eventTime, setEventTime] = useState(false);
-    const [days, setDays] = useState(0);
-    const [hours, setHours] = useState(0);
-    const [minutes, setMinutes] = useState(0);
-    const [seconds, setSeconds] = useState(0);
+  const [eventTime, setEventTime] = useState(false);
+  const [days, setDays] = useState(0);
+  const [hours, setHours] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
 
-    useEffect(() => {
 
-       const target = new Date("05/20/2024 18:00:00");
-    
+  const [applyTime, setApplyTime] = useState(false);
+  const [applyDays, setApplyDays] = useState(0);
+  const [applyHours, setApplyHours] = useState(0);
+  const [applyMinutes, setApplyMinutes] = useState(0);
+  const [applySeconds, setApplySeconds] = useState(0);
 
-      const interval = setInterval(() => {
-        const now = new Date();
+  useEffect(() => {
 
-        const difference = target.getTime() - now.getTime();
+     const target = new Date("05/20/2024 18:00:00");
+     const applyTarget = new Date("05/19/2024 23:59:59");
+  
 
-        const d = Math.floor(difference / (1000 * 60 * 60 * 24));
-        setDays(d);
+    const interval = setInterval(() => {
+      const now = new Date();
 
-        const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        setHours(h);
+      const difference = target.getTime() - now.getTime();
 
-        const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        setMinutes(m);
+      const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+      setDays(d);
 
-        const s = Math.floor((difference % (1000 * 60)) / 1000);
-        setSeconds(s);
+      const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      setHours(h);
 
-        const targetTime = new Date("05/02/2025 21:41:30"); // Convert target time to a Date object
+      const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      setMinutes(m);
 
-        if(target.getTime() === targetTime.getTime() && toBeAnnounced === false){ // Compare target time with targetTime
-          setAnnounced(true);
-        } else if(d<=0 && h<=0 && m<=0 && s<=0){
-          setEventTime(true);
-        }
+      const s = Math.floor((difference % (1000 * 60)) / 1000);
+      setSeconds(s);
 
-      }, 1000);
+      const applyDifference = applyTarget.getTime() - now.getTime();
 
-      return () => clearInterval(interval);
+      const ad = Math.floor(applyDifference / (1000 * 60 * 60 * 24));
+      setApplyDays(ad);
+
+      const ah = Math.floor((applyDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      setApplyHours(ah);
+
+      const am = Math.floor((applyDifference % (1000 * 60 * 60)) / (1000 * 60));
+      setApplyMinutes(am);
+
+      const as = Math.floor((applyDifference % (1000 * 60)) / 1000);
+      setApplySeconds(as);
+
+      if(d<=0 && h<=0 && m<=0 && s<=0){
+        setEventTime(true);
+      }
+
+      if(ad<=0 && ah<=0 && am<=0 && as<=0){
+        setApplyTime(true);
+      }
+
+    }, 1000);
+
+    return () => clearInterval(interval);
 
 
     }, []);
@@ -76,20 +97,14 @@ export default function Hero() {
           <Link href={"https://forms.gle/Gm3Q5xNAA6hiZMKS8"}>
             <Button text="Apply Now!" icon={MdArrowOutward}></Button>
             <span>Time Left to Apply:</span> <br />
-              {/* <span className="text-eestec font-bold">XX</span><span> d </span>
-              <span className="text-eestec font-bold">XX</span><span> h </span> 
-              <span className="text-eestec font-bold">XX</span><span> m </span> 
-              <span className="text-eestec font-bold">XX</span><span> s </span>   */}
-
-                {toBeAnnounced ? (<span className="text-eestec font-bold">To Be Announced!</span>) : 
-                (eventTime ? (<span className="text-eestec font-bold">Event has started!</span>) : (
-                <><span>{days-1} d <span className="text-eestec font-bold"> : </span> 
-                {hours} h <span className="text-eestec font-bold"> : </span> 
-                {minutes} mins <span className="text-eestec font-bold"> : </span> 
-                {seconds} sec</span><br /></> )
+                {
+                (applyTime ? (<span className="text-red-500 font-bold">Time for Applying has ended!</span>) : (
+                <><span>{applyDays} d <span className="text-eestec font-bold"> : </span> 
+                {applyHours} h <span className="text-eestec font-bold"> : </span> 
+                {applyMinutes} mins <span className="text-eestec font-bold"> : </span> 
+                {applySeconds} sec</span><br /></> )
                 )
               }
-
               
               
           </Link>
@@ -100,10 +115,9 @@ export default function Hero() {
         </div>
 
         <div className="lg:flex justify-evenly items-center gap-14">
-          <h1 className="md:text-5xl text-4xl font-semibold my-3 text-center text-white">
+        <h1 className="md:text-5xl text-4xl font-semibold my-3 text-center text-white">
           Next<span> <span className="text-eestec font-bold">event</span> in:</span> <br /> <br />
-          {toBeAnnounced ? (<span className="text-eestec font-bold">To Be Announced!</span>) : 
-                (eventTime ? (<span className="text-eestec font-bold">Event has started!</span>) : (
+          {(eventTime ? (<span className="text-eestec font-bold">Event has started!</span>) : (
                 <><span>{days} d <span className="text-eestec font-bold"> : </span> 
                 {hours} h <span className="text-eestec font-bold"> : </span> 
                 {minutes} mins <span className="text-eestec font-bold"> : </span> 
