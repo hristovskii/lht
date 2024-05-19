@@ -14,9 +14,9 @@ export default function Sponsors() {
             <RevealList interval={100} delay={500}>
             <div className="lg:px-36 md:px-16 px-4 grid justify-center items-center">
                 <Heading heading={"Partners & Supporters"}></Heading>
-                <Image src={base_black} alt="Sponsor Logo" width={600} className="mt-8 mb-8"></Image>
-                {/* <Image src={CrazyLabs} alt="Sponsor Logo" height={250} className="mt-8 mb-8"></Image>
-                <Image src={HTec} alt="Sponsor Logo" height={250} className="mt-8 mb-8"></Image> */}
+                <a href="https://42.mk/" target="_blank">
+                <Image src={base_black} alt="Sponsor Logo" width={600} className="mt-8 mb-8 img-animation"></Image>
+                </a>
             </div>
             </RevealList>
         </section>

@@ -21,6 +21,13 @@ body {
   background: #FFFFFF;
 }
 
+.img-animation {
+  transition: transform 0.3s ease-in-out;
+}
+.img-animation:hover{
+  transform: scale(1.10);
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
